@@ -1,1508 +1,635 @@
-@import url('https://fonts.googleapis.com/css2?family=Passion+One:wght@400;700;900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-html{
-    scroll-snap-type: y mandatory;
-    scroll-behavior: smooth;
-}
-body::-webkit-scrollbar{
-    display: none;
-}
-body{
-    overflow-x: hidden;
-    background-color: black;
-    /* background-color: black; */
-    /* font-family: "Passion One", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    font-family: "Roboto Condensed", sans-serif; */
-    font-family: "PorscheNext-SemiBold";
-    /* overflow: hidden; */
-    
-    scroll-snap-type: start;
-}
-.scroll{
-    scroll-snap-align: start;
-}
-#headContainer{
-    height: 100vh;
-    padding: 2rem 10%;
-    background: radial-gradient(circle, rgb(79, 172, 184) 0%, rgb(47, 114, 140) 42%);
-    nav{
-        color:white;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        img{
-            width: 200px;
-        }
-        .fa-bars,.fa-user{
-            font-size: 20px;
-            cursor: pointer;
-            transition: 0.2s ease-in-out;
-            &:hover{
-                scale: 1.2;
-            }
-        }
-        #sidebar{
-            z-index: 10;
-            color: white;
-
-            .container-navbar{
-                position: fixed;
-                top: 0;
-                background-color: white;
-                padding: 30px;
-                width: 40%;
-                bottom: 0;
-                transition: 0.5s;
-                left: -100%;
-                z-index: 100;
-                label{
-                    padding: 10px 20px;
-                    color:black;
-                    cursor: pointer;
-                    font-size: 25px;
-                    &:hover i{
-                        animation: rotate 0.5s;
-                }
-            }
-
-            nav{
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://db.onlinewebfonts.com/c/933c49b428b4f2b1fbda6c88638ccc51?family=PorscheNext-SemiBold" rel="stylesheet" type="text/css"/>
+    <title>PaPaN - Cayenne model</title>
+</head>
+<body>
+    <div id="headContainer" class="scroll">
+        <nav>
+            <input type="checkbox" id="navbar" hidden>
+            <div id="sidebar">
+                <label for="navbar">
+                    <i class="fa-solid fa-bars"></i>
+                </label>
+                <div class="container-navbar">
+                    <label for="navbar">
+                        <i class="fa-solid fa-xmark"></i>
+                    </label>
+                    <nav>
+                        <ul class="notdropdown-container">
+                            <li class="notdropdown" tabindex="0">Model <i class="fa-solid fa-chevron-right" ></i>
+                                <ul class="dropdown model">
+                                    <i class="fa-solid fa-arrow-left"></i>
+                                    <a href="../index.html">
+                                        <li>
+                                            <div>
+                                                <h3>718</h3>
+                                                <img src="https://files.porsche.com/filestore/image/multimedia/none/718-boxster-modelexplorer/normal/cc88ba33-fee0-11ed-8103-005056bbdc38;sO;twebp/porsche-normal.webp">
+                                                <p>Gasoline</p>
+                                            </div>
+                                        </li>
+                                    </a>
+                                    <a href="../911 Model/index.html">
+                                        <li>
+                                            <div>
+                                                <h3>911</h3>
+                                                <img src="../911 Model/img/porsche-normal(2).png">
+                                                <p>Gasoline</p>
+                                            </div>
+                                        </li>
+                                    </a>
                 
-               
-                ul,li{
-                    color:black;
-                    list-style: none;
-                    a{
-                        text-decoration: none;
-                        color: rgb(0, 0, 0);
-                    }
-                    
-                }
-                .notdropdown-container{
-                    width: 100%;
-                    display: flex;
-                    justify-content: space-between;
-                    gap: 5px;
-                    flex-direction: column;
-                }
-                .notdropdown{
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    cursor: pointer;
-                    padding: 10px 20px;
-                    &:hover{
-                        background-color: rgb(176, 172, 172);
-                    }
-                    &:focus{
-                        background-color: rgb(154, 155, 155);
-
-                    }
-                    .dropdown{
-                        animation: rise 0.5s;
-                        width: 350px;
-                        padding: 30px 40px;
-                        display: none;
-                        background-color: rgb(236, 235, 235);
-                        position: fixed;
-                        top: 0;
-                        bottom: 0;
-                        left: 40%;  
-                        li{
-                           
-                            a{
-                                img{
-                                    border-radius: 2px;
-                                    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.203);
-                                }
-                                
-                                 
-                            }
-                        }
-                       
-                        .fa-arrow-left{
-                            display: none;
-
-                            font-size: 20px;
-                            transition: 0.3s;
-                            &:hover{
-                                font-size: 25px;
-                            }
-                        }
-                    
-                    }
-                    .pic{
-                        /* position: relative; */
-                        li{
-                            margin: 40px 0;
-
-                            padding: 10px 20px;
-                            
-                            a{
-                                display: flex;
-                                position: relative;
-                                align-items: center;
-                                justify-content: center;
-                                p{
-                                    z-index: 10;
-                                         /* top: 50%;
-                                    left: 50%;
-                                    transform: translate(-50%,-50%); */
-                                    position: absolute;
-                                }
-                                img{
-                                    transition: 0.5s;
-                                    height: 0;
-                                    object-fit: cover;
-
-                                }
-                            }
-                        }
-                        li:hover a img{
-                            filter: brightness(50%);
-                            height: 300px;
-                        }
-                        li:hover a p{
-                            color: rgb(248, 248, 248);
-                        }
-                    }
-                    .model{
-                        overflow-y: scroll;
-                        display: none;
-                        flex-direction: column;
-                        gap:35px;
-                        a{
-                            /* height: 150px; */
-                            border-radius: 10px;
-                            transition: 0.2s;
-                            padding: 10px 20px 20px 20px;
-                            li{
-                                display: flex;
-                                flex-direction: column;
-                                align-items: center;
-                                div{
-                                    /* width: 100%; */
-                                    img{
-                                        transform: scale(1.3);
-                                        transition: 0.2s linear;
-                                        width: 100%;
-
-                                        height: 80px;
-                                        object-fit: cover;
-                                        width: 100%;
-                                    }
-                                    
-                                    h3{
-                                        font-size: 20px;
-                                    }
-                                    p{
-
-                                        color: white;
-                                        font-size: 15px;
-                                        display: inline;
-                                        padding:  2px 10px;
-                                        background-color: rgb(100, 98, 98);
-                                        border-radius: 5px;
-                                    }
-                                }
-                                
-                               
-                            }
-                        }
-                        .bigcar{
-                            li{
-                                img{
-                                    padding: 12px;
-                                    margin-left: 30px;
-                                    width: 80%;
-                                }
-                                p{
-                                    margin-left: 20px;
-                                }
-                                h3{
-                                    margin-left: 20px;
-                                }
-                            }
-                        }
-                        a:hover img{
-                            transform: translateX(20px) scale(1.3);
-                        }
-                        a:hover {
-                            background-color: white;
-                            box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.064) ;
-                        }
-                    }
-                    .model::-webkit-scrollbar{
-                        display: none;
-                    }
-                        
-                                  
-                }
+                                    <a href="../Taycan Model/index.html">
+                                        <li>
+                                            <div>
+                                                <h3>Taycan</h3>
+                                                <img src="../Taycan Model/img/Taycan(7).png">
+                                                <p>Gasoline</p>
+                                            </div>
+                                        </li>
+                                    </a>
                 
-                .notdropdown:focus-within .dropdown{
-                    display: block;
-                    
-                }
-                .notdropdown:focus-within .model{
-                    display: flex;
-                    
-                }
-            
-            }
-            }
-
-        }    
-        #navbar:checked ~ #sidebar::before{
-            backdrop-filter: blur(15px);
-            background-color: rgba(0, 0, 0, 0.322);
-            position: fixed;
-            content: '';
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            /* background-color: aqua; */
-            z-index: -1;
-        }
-        #navbar:checked ~ #sidebar .container-navbar{
-            left: 0;
-        }
-    }
-    #container{
-        color:white;
-        position: relative;
-        height: 90vh;
-        display: flex;
-        align-items: center;
-        h1{
-            line-height: 150px;
-            p{
-                text-align: start;
-                font-family: "Roboto Condensed", sans-serif;
-                font-size: 30px;
-            }
-            font-family: "Passion One", sans-serif;
-            font-weight: 400;
-            position: absolute;
-            top: 29%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            /* z-index: 3; */
-            font-size: 300px;
-            font-weight: 400;
-        }
-        /* padding: 2rem 15%; */
-        /* border: 2px red solid; */
-        #slider {
-            /* padding: 100px; */
-            position: relative;
-            display: flex;
-            justify-content: center;
-            /* width: 800px; */
-            /* border: 2px solid red; */
-            input[type = radio]{
-                display: none;
-            }
-            /* padding: 30px; */
-            #overflow{
-                /* border: 2px solid red;   */
-                overflow: hidden;
-                width: 80%;
-
-            }
-            /* .scroll::-webkit-scrollbar{
-                display: none;
-            } */
-            .scroll{
-                /* overflow-x: scroll;
-                scroll-snap-type:x mandatory; */
-                /* border: 2px solid red; */
-                width: 600%;
-                height: 500px;
-                position: relative;
-                display: flex;
-                transition: 0.5s ease-in-out;
-                .slide{
-                    scroll-snap-align: start;
-                    object-fit: cover;
-                    float: left;
-                    width: 100%;
-                    max-width:16.66%;
-                }
-            
-            }
-
-            #slide1:checked ~ #overflow .scroll{
-                margin-left: 0;
-            }
-            #slide2:checked ~ #overflow .scroll{
-                margin-left: -100%;
-            }
-            #slide3:checked ~ #overflow .scroll{
-                margin-left: -200%;
-            }
-            #slide4:checked ~ #overflow .scroll{
-                margin-left: -300%;
-            }
-            #slide5:checked ~ #overflow .scroll{
-                margin-left: -400%;
-            }
-            #slide6:checked ~ #overflow .scroll{
-                margin-left: -500%;
-            }
-
-
-            #slide1:checked ~ #control label:nth-child(2),
-            #slide2:checked ~ #control label:nth-child(3),
-            #slide3:checked ~ #control label:nth-child(4),
-            #slide4:checked ~ #control label:nth-child(5),
-            #slide5:checked ~ #control label:nth-child(6){
-                height: 50px;
-                width: 50px;
-                position: absolute;
-                transition: 0.2s;
-
-                right: 0;
-                top: 50%;
-                cursor: pointer;
-                background-image: url(img/right-chevron-svgrepo-com.png);
-                background-size: cover;
-                &:hover{
-                    transform: scale(1.5);
-                }
-            }
-            #slide2:checked ~ #control label:nth-child(1),
-            #slide3:checked ~ #control label:nth-child(2),
-            #slide4:checked ~ #control label:nth-child(3),
-            #slide5:checked ~ #control label:nth-child(4),
-            #slide6:checked ~ #control label:nth-child(5){
-                height: 50px;
-                width: 50px;
-                transition: 0.2s;
-                left: 0;
-                top: 50%;
-                cursor: pointer;
-                position: absolute;
-                background-image: url(img/left-chevron-svgrepo-com.png);
-                background-size: cover;
-                &:hover{
-                    transform: scale(1.5);
-                }
-            }
-            #bullets{
-                /* height: 50px; */
-                /* width: 50px; */
-                display: flex;
-                bottom: -80px;
-                gap: 30px;
-                border-radius: 50%;
-                /* background-color: white; */
-                position: absolute;
-                label{
-                    width: 16px;
-                    height: 16px;
-                    background-color: white;
-                    border-radius: 50px;
-                    position: relative;
-                    transition: 0.2s ease-in;
-                    cursor: pointer;
-                }
-                label::after{
-
-                    position: absolute;
-                    content: '';
-                    width: 22px;
-                    height: 22px;
-                    background-color: rgba(0, 0, 0, 0);
-                    border: 1px solid white;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%,-50%);
-
-                    border-radius: 50px;
-                }
-            }
-
-            #slide1:checked ~ #bullets label:nth-child(1),
-            #slide2:checked ~ #bullets label:nth-child(2),
-            #slide3:checked ~ #bullets label:nth-child(3),
-            #slide4:checked ~ #bullets label:nth-child(4),
-            #slide5:checked ~ #bullets label:nth-child(5),
-            #slide6:checked ~ #bullets label:nth-child(6){
-                background-color: rgb(0, 0, 0);
-
-            }
-            #content{      
-                /* font-family: 'Roboto Condensed',serif; */
-                position: absolute;
-                bottom: -50px;
-                width: 100%;
-                .textBox{
-                    display: none;
-                    align-items: center; 
-                    justify-content: space-between;
-                    animation: bot 0.3s ease-in-out;
-                    .leftText{
-                        width: 700px;
-                        h2{
-                            transition: 1s ;
-
-                            font-size: 40px;
-                            font-weight: 400;
-                        }
-                        p{
-                            font-size: 15px;
-                            line-height: 35px;
-                        }
-                    }
-                    .rightText{
-                        display: flex;
-                        /* gap: 30px; */
-                        text-align: center;
-                        justify-content: space-between;
-                        width: 40%;
-                        div{
-                            img{
-                                width: 40px;
-                            }
-
-                            h3{
-                                font-size: 20px;
-                            }
-                            p{
-                                font-size: 12px;
-                            }
-                        }
-
-                    }
-                }
-            }
-
-            #slide1:checked ~ #content .textBox:nth-child(1),
-            #slide2:checked ~ #content .textBox:nth-child(2),
-            #slide3:checked ~ #content .textBox:nth-child(3),
-            #slide4:checked ~ #content .textBox:nth-child(4),
-            #slide5:checked ~ #content .textBox:nth-child(5),
-            #slide6:checked ~ #content .textBox:nth-child(6){
-                display: flex;
-            }
-        }
-    }
-}
-
-@keyframes rotate{
-    0%{
-        scale: 1;
-        transform: rotate(0deg);
-    }
-    50%{
-        scale: 1.2;
-    }
-    100%{
-        scale: 1;
-        transform: rotate(180deg);
-    }
-}
-@keyframes bot{
-    0%{
-        opacity: 0;
-
-        transform: translateY(200px);
-    }
-    100%{
-        opacity: 1;
-
-        transform: translateX(0);
-    }
-}
-#main{
-    
-    nav{
-        .ruler{
-            width: 100%;
-            height: 1px;
-            background-color: white;
-        }
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 0rem 10%;
-        .link{
-            padding: 30px 0;
-            display: flex;
-            width: 100%;
-            align-items: center;
-
-            justify-content: space-around;
-            a{
-                text-decoration: none;
-                color: white;
-                font-size: 20px;
-                transition: 0.2s;
-                &:hover{
-                    color: rgb(106, 106, 108);
-                }
-            }
-
-        }
-    }
-    section{
-        height: 100vh;
-    }
-    #Concept{
-        position: relative;
-        background-image: linear-gradient(rgb(0, 0, 0) 5%,rgba(0, 0, 0, 0.34)90%,rgba(255, 255, 255, 0) );
-        display: flex;
-        align-items: center;
-        img{
-            width: 100%;
-            position: absolute;
-            z-index: -1;
-            top: 0;
-        }
-        
-        .text{
-            transform: translateY(-60px);
-            padding: 0 10%;
-            color: white;
-            /* position: absolute; */
-            top: 30%;
-            left: 10%;
-            min-width: 200px;
-            width: 70%;
-            h1{
-                font-size: 60px;
-            }
-            p{
-                font-size: 15px;
-            }
-        }
-    }
-    #Performance{
-        overflow: hidden;
-        position: relative;
-        .top {
-            display: flex;
-            height: 50%;
-            img{
-                object-fit: cover;
-                width: 50%;
-                filter: brightness(80%);
-            }
-
-            .text{
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                padding: 30px;
-                background-color: white;
-                width: 50%;
-                text-align: center;
-                color:rgb(12, 12, 12);
-                h1{
-                    font-size: 60px;
-                }
-                p{
-                    font-size: 15px;
-                }
-            }
-        }
-    }
-    #Sound{
-        text-align: center;
-        h1{
-            font-size: 60px;
-        }
-        p{
-            font-size: 25px;
-        }
-        /* background-color: aliceblue; */
-        color:white;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 100px;
-
-        .Container{
-            gap: 30px;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            .right{
-                width: 60%;
-                clip-path: polygon(0 0, 100% 0, 100% 100%, 38% 100%);
-                img{
-                    /* width: 100%; */
-                    object-fit: cover;
-                    height: 500px;
-                }
-            }
-            .left{
-                width: 30%;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 20px;
-                p{
-                    font-size: 20px;
-                }
-                #button{
-                    padding: 10px;
-                    border-radius: 10px;
-                    display: flex;
-                    align-items: center;
-                    gap: 20px;
-                    border: 2px solid white;
-                    .play-pause{
-                        padding: 10px;
-                        background-color: white;
-                        clip-path: circle();
-                        i{
-                            width: 20px;
-                            /* font-size: 20px; */
-                            height: 20px;
-                            color: black;
-                        }
-                    }
-                    input:checked ~ label .fa-pause{
-                        display: none;
-                    }
-                    input:not(:checked) ~ label .fa-play{
-                        display: none;
-                    }
-                    input:not(:checked) ~ .wave{
-                        display: flex;
-                    }
-
-
-                    .wave{
-                        display: flex;
-                        transform: rotate(180deg);
-                        gap: 5px;
-                        animation: rise 0.5s linear;
-                        display: none;
-                        height: 25px;
-                        .line{
-                            animation: wave 0.5s ease-in-out infinite ;
-                            animation-delay: calc(var(--position)* 0.25s);
-                            width: 2px;
-                            background-color: white;
-                        }
-                    }
-
-                }
-            }
-        }
-       
-    }
-    #Gallery{
-        overflow: hidden;
-        color: rgb(255, 255, 255);
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        gap: 30px;
-        h1{
-            font-size: 60px;
-        }
-        .item{
-            height: 90%;
-            display: grid;
-            grid-template-columns: repeat(4,1fr);
-            grid-template-rows: 300px 1fr;
-            grid-template-areas: 
-            "c a a e"
-            "d d b b";
-
-            img{
-                width: 100%;
-                object-fit: cover;
-                height: 100%;
-            }
-        }
-
-    }
-    
-}
-@keyframes wave{
-    0%,100%{
-        height: 30%;
-    }
-    50%{
-        height: 100%;
-    }
-}
-@keyframes rise {
-    0%{
-        opacity: 0;
-    }
-    100%{
-        opacity: 1;
-    }
-}
-
-.footer {
-    /* height: 100vh; */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: black;
-    a{
-        color:white;
-    }
-    
-    /* display: none; */
-    padding: 2rem 5%;
-    color:white;
-    .title {
-        font-size: 1.3rem;
-        margin: 12px 0px;
-    }
-    .info-01 {
-        display: flex;
-        gap: 9rem;
-        .location-contact {
-            width: 27%;
-        }
-        .social-media {
-            width: 50%;
-            .info {
-                margin: 8px 0px;
-            }
-            .media {
-                a {
-                    margin: 0px 4px;
-                    text-align: center;
-                    i {
-                        padding: 11px 0px;
-                        background-color: white;
-                        color: black;
-                        border-radius: 6px;
-                        font-size: 1.2rem;
-                        width: 7.5%;
-                    }
-                }
-            }
-        }
-    }
-    .info-02 {
-        display: flex;
-        flex-direction: column;
-        .link {
-            display: flex;
-            gap: 3.5rem;
-            div {
-                display: flex;
-                flex-direction: column;
-                a {
-                    margin: 5px 0px;
-                }
-            }
-        }
-    }
-    .ruler {
-        width: 100%;
-        background-color: rgba(149, 148, 148, 0.747);
-        height: 1px;
-        margin: 4rem 0rem;
-    }
-    .info-03 {
-        .company {
-            text-align: center;
-            margin-top: 3rem;
-            margin-bottom: 4rem;
-            a {
-                margin: 40px;
-                .papan {
-                    width: 15%;
-                }
-                .porsche {
-                    width: 21%;
-                }
-            }
-        }
-    }
-   
-}
-@media (max-width:1312px){
-    #headContainer{
-        nav{
-            img{
-                width: 25vh;
-            }
-        }
-        #container{
-            position: relative;
-
-           h1{
-                top:35%;
-                line-height: 130px;
-                font-size: 250px;
-                p{
-                    font-size: 30px;
-                }
-            }
-            #slider{
-                #overflow{
-                    width: 80%;
-                    .scroll{
-                        height: 300px;
-                    }
-                }
-                #slide1:checked ~ #control label:nth-child(2),
-                #slide2:checked ~ #control label:nth-child(3),
-                #slide3:checked ~ #control label:nth-child(4),
-                #slide4:checked ~ #control label:nth-child(5),
-                #slide5:checked ~ #control label:nth-child(6){
-                    
-    
-                    /* right: -9%; */
-                    top: 50%;
-                    cursor: pointer;
-                   
-                }
-                #slide2:checked ~ #control label:nth-child(1),
-                #slide3:checked ~ #control label:nth-child(2),
-                #slide4:checked ~ #control label:nth-child(3),
-                #slide5:checked ~ #control label:nth-child(4),
-                #slide6:checked ~ #control label:nth-child(5){
-                    
-                    /* left: -9%; */
-                    top: 50%;
-                    
-                }
-                #content{
-                    bottom: -8vw;
-                    .textBox{
-                        .leftText{
-                            h2{
-                                font-size: 30px;
-                            }
-                            p{
-                                font-size: 12px;
-                            }
-                        }
-                        .rightText{
-                            div{
-                                h3{
-                                    font-size: 20px;
-                                }
-                                p{
-                                    font-size: 12px;
-                                }
-                                img{
-                                    width: 35px;
-                                }
-                            }
-                        }
-                        
-                    }
-                }
-                #bullets{
-                    scale: 0.8;
-                    bottom: -11vw;
-                }
-            }
-            
-
-        }
-    }
-    #main{
-        #Concept{
-            background-image: linear-gradient(0deg, rgba(180,179,179,0) 55%, rgba(0,0,0,1) 93%);
-            flex-direction: column;
-            justify-content: space-around;
-            .text{
-                width: 100%;
-                text-align: center;
-                margin-top: 20px;
-                h1{
-                    font-size: 50px;
-                }
-                p{
-                    font-size: 20px;
-                }
-            }
-            img{
-                display: block;
-                object-fit: cover;
-                height: 50%;
-                position: relative;
-            }
-            
-        }
-        #Sound{
-            gap: 20px;
-            h1{
-                font-size: 50px;
-            }
-            .Container{
-                height: 80%;
-                flex-direction: column;
-                .left{
-                    width: 100%;
-                    padding: 0 10%;
-                    order: 2;
-                    
-                }
-                .right{
-
-                    clip-path: none;
-                    order: 1;
-                    width: 90%;
-                    .imgContainer{
-                        img{
-                            object-fit: cover;
-                            height: 300px;
-                            width: 100%;
-                        }
-                    }
-
-                }
-            }
-        }
-        #Performance{
-            height: auto;
-            .top{
-               
-                .text{
-                    padding: 20px;
-                    width: 100%;
-                    h1{
-                        font-size: 50px;
-                    }
-                    p{
-                        font-size: 20px;
-                    }
-                }
-            }
-           
-        }
-        #Gallery{
-            .item{
-                grid-template-rows: 1fr 1fr 1fr 1fr ;
-            }
-            h1{
-                font-size: 50px;
-            }
-        }
-
-    }
-    .scroll{
-        scroll-snap-align:unset;
-    }
-    .footer {
-        height: auto;
-        .info-01 {
-            flex-direction: column;
-            gap: 3rem;
-
-            .social-media {
-                width: 100%;
-            }
-        }
-        .info-03{
-            .company{
-                margin: 0;
-                display: flex;
-                flex-wrap: wrap;
-                align-items: center;
-                justify-content: center;
-                a{
-                    .porsche{
-                        width: 25vw;
-                    }
-                    .papan{
-                        width: 20vw;
-                    }
-                }
+                                    <a href="../Panamera Model/index.html">
+                                        <li>
+                                            <div>
+                                                <h3>Panamera</h3>
+                                                <img src="../Panamera Model/img/Paramera.png">
+                                                <p>Gasoline</p>
+                                            </div>
+                                        </li>
+                                    </a>
                 
-            }
-        }
-    }
-}
-@media (max-width:1024px) {
-    #headContainer{
-        nav{
-            img{
-                width: 25vw;
-            }
-        }
-        #container{
-            position: relative;
-
-           h1{
-                top:40%;
-                line-height: 90px;
-                font-size: 150px;
-                p{
-                    font-size: 30px;
-                }
-            }
-            #slider{
-                #overflow{
-                    width: 100%;
-                    .scroll{
-                        height: 250px;
-                    }
-                }
-                #slide1:checked ~ #control label:nth-child(2),
-                #slide2:checked ~ #control label:nth-child(3),
-                #slide3:checked ~ #control label:nth-child(4),
-                #slide4:checked ~ #control label:nth-child(5),
-                #slide5:checked ~ #control label:nth-child(6){
-                    
-    
-                    right: -9%;
-                    top: 50%;
-                    cursor: pointer;
-                   
-                }
-                #slide2:checked ~ #control label:nth-child(1),
-                #slide3:checked ~ #control label:nth-child(2),
-                #slide4:checked ~ #control label:nth-child(3),
-                #slide5:checked ~ #control label:nth-child(4),
-                #slide6:checked ~ #control label:nth-child(5){
-                    
-                    left: -9%;
-                    top: 50%;
-                    
-                }
-                #content{
-                    /* position: relative; */
-                    bottom: -150px;
-                    .textBox{
-
-                        width: 100%;
-                        /* position: relative; */
-                        justify-content: center;
-                        .leftText{
-                            position: absolute;
-                            left: 5%;
-                            width: 90%;
-
-                            top:-45vh;
-                            /* padding: 0 8%; */
-
-                            h2{
-                                font-size: 30px;
-                            }
-                            p{
-                                display: none;
-                                font-size: 0px;
-                            }
-                        }
-                        .rightText{
-                            width: 100%;
-                            div{
-                                h3{
-
-                                    font-size: 25px;
-                                }
-                                p{
-                                    font-size: 15px;
-                                }
-                            }
-                        }
-                    }
-                }
-                #bullets{
-                    bottom:-220px;
-                }
-            }
-            
-
-        }
-    }
-    #main{
-        #Concept{
-            background-image: linear-gradient(0deg, rgba(180,179,179,0) 55%, rgba(0,0,0,1) 93%);
-            flex-direction: column;
-            justify-content: space-around;
-            .text{
-                width: 100%;
-                text-align: center;
-                h1{
-                    font-size: 50px;
-                }
-                p{
-                    font-size: 20px;
-                }
-            }
-            video{
-                display: block;
-                height: 50%;
-                position: relative;
-            }
-            
-        }
-        #Sound{
-            gap: 20px;
-            h1{
-                font-size: 50px;
-            }
-            .Container{
-                height: 80%;
-                flex-direction: column;
-                .left{
-                    width: 100%;
-                    padding: 0 10%;
-                    order: 2;
-                    
-                }
-                .right{
-
-                    clip-path: none;
-                    order: 1;
-                    width: 90%;
-                    .imgContainer{
-                        img{
-                            object-fit: cover;
-                            height: 300px;
-                            width: 100%;
-                        }
-                    }
-
-                }
-            }
-        }
-        #Performance{
-            height: auto;
-            .top{
+                                    <a href="../Macan Model/index.html">
+                                        <li>
+                                            <div>
+                                                <h3>Macan</h3>
+                                                <img src="https://files.porsche.com/filestore/image/multimedia/none/pa3-t-modelexplorer/normal/663d053e-85ac-11ec-80e9-005056bbdc38;sP;twebp/porsche-normal.webp">
+                                                <p>Gasoline</p>
+                                            </div>
+                                        </li>
+                                    </a>
+                                    <a href="../Cayenne Model/index.html" >
+                                        <li>
+                                            <div>
+                                                <h3>Cayenne</h3>
+                                                <img src="../Cayenne Model/img/cayyenee.png">
+                                                <p>Gasoline</p>
+                                            </div>
+                                        </li>
+                                    </a>
                 
-                .text{
-                    padding: 20px;
-                    width: 100%;
-                    h1{
-                        font-size: 50px;
-                    }
-                    p{
-                        font-size: 20px;
-                    }
-                }
-            }
-           
-        }
-        #Gallery{
-            height: auto;
-            .item{
-                grid-template-rows: 1fr 1fr;
-            }
-            h1{
-                font-size: 50px;
-            }
-        }
-
-    }
-    .scroll{
-        scroll-snap-align:unset;
-    }
-    .footer {
-        height: auto;
-        .info-01 {
-            flex-direction: column;
-            gap: 3rem;
-
-            .social-media {
-                width: 100%;
-            }
-        }
-        .info-03{
-            .company{
-                margin: 0;
-                display: flex;
-                flex-wrap: wrap;
-                align-items: center;
-                justify-content: center;
-                a{
-                    .porsche{
-                        width: 25vw;
-                    }
-                    .papan{
-                        width: 20vw;
-                    }
-                }
                 
-            }
-        }
-    }
-}
-@media (max-width:480px){
-  
-    #headContainer{
-        nav{
-            img{
-                width: 45%;
-            }
-            #sidebar{
-                .container-navbar{
-                    width: 100%;
-                    .notdropdown-container{
-                        .notdropdown{
-                            .dropdown{
-                                width: 100%;
-                                i{
-                                    display: block;
-                                }
-                                left: -100%;
-                                transition: 0.5s;
-                                animation: unset;
-                                display: unset;
-                            }
-                            .pic{
-                                li{
-                                    a{
-                                        img{
-                                            width: 300px;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        .notdropdown:focus-within .dropdown{
-                            left: 0;
-                        }
-                    }
-                }
-            }
-            
-        }
-        
-        #container{
-            h1{
-                top:43%;
-                line-height: 60px;
-                font-size: 100px;
-                p{
-                    font-size: 20px;
-                }
-            }
-            
-
-            #slider{
-                width: 100%;
-                #overflow{
-                    width: 100%;
-                    .scroll{
-                        height: 200px;
-                    
-                    }
-                }
-                #content{
-                    bottom: -120px;
-                    .textBox{
-                        /* animation: none; */
-                        justify-content: center;
-                        /* border: 2px rgb(72, 34, 34) solid; */
-                        /* width: 200px; */
-                        .leftText{
-                            width: 100%;
-                            top: -50vh;
-                            /* border: 2px red solid; */
-                            position: absolute;
-                            h2{
-                                font-size: 25px;
-                            }
-                            p{
-                                display: none;
-                            }
-                        }
-                        .rightText{
-                            width: 100%;
-                           /* position: absolute; */
-                            /* border: 2px red solid; */
-
-                            div{
-                                img{
-                                    width: 30%;
-                                }
-                                h3{
-                                    font-size: 15px;
-                                }
-                                p{
-                                    font-size: 10px;
-                                }
-                            }
-                        }
-                    }
-                }
-                #bullets{
-                    gap: 20px;
-                    bottom: -180px;
-                    label{
-                        width: 14px;
-                        height: 14px;
-                    }
-                    label::after{
-                        width: 21px;
-                        height: 21px;
-                    }
-                }
+                                </ul>
+                            </li>
+                            <li class="notdropdown" tabindex="0">
+                                Shop <i class="fa-solid fa-chevron-right"></i>
+                                <ul class="dropdown pic">
+                                    <i class="fa-solid fa-arrow-left"></i>
+                                    <li>
+                                        <a href="#">
+                                            <p>Home & lifestyle</p>
+                                            <img src="https://shop.porsche.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2F1oyzmkwpf3d5%2F4PLL9HHypgAm7qXFZKqI3N%2Fcdeadd4f84b7f72a0d4d63cf06a92047%2FWoman_and_man_standing_next_to_a_Porsche_911_Turbo.png&w=1920&q=75">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <p>Vehicle Accessories</p>
+                                            <img src="https://shop.porsche.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2F1oyzmkwpf3d5%2FgnS7tAOR87wHF9DkUdYT5%2F256cf1223b9e65dfa852cc243616ad80%2FPorsche_Originals__1_.jpg&w=1920&q=75">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="notdropdown" tabindex="0">
+                                Service <i class="fa-solid fa-chevron-right"></i>
+                                <ul class="dropdown pic">
+                                    <i class="fa-solid fa-arrow-left"></i>
+                                     <li>
+                                        <a href="#">
+                                            <p>Maintenace</p>
+                                            <img src="https://files.porsche.com/filestore/image/multimedia/none/porscheservice-warrantyandvehicleinformation-anchorteaser/normal/38725e45-98a7-11e9-80c4-005056bbdc38;sO;twebp/porsche-normal.webp">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <p>Rental</p>
+                                            <img src="https://shop.porsche.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2F1oyzmkwpf3d5%2F7tVAmNLBs3MBPva0pd37hU%2F377b43fcdb6f62d0d8872358ada5b64e%2FPorsche_car_under_a_Car_Cover.jpg&w=1920&q=75">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="notdropdown" tabindex="0">
+                                Vihicle Purchase <i class="fa-solid fa-chevron-right"></i>
+                                <ul class="dropdown pic">
+                                    <i class="fa-solid fa-arrow-left"></i>
+                                     <li>
+                                        <a href="#">
+                                            <p>Home & lifestyle</p>
+                                            <img src="https://shop.porsche.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2F1oyzmkwpf3d5%2F4PLL9HHypgAm7qXFZKqI3N%2Fcdeadd4f84b7f72a0d4d63cf06a92047%2FWoman_and_man_standing_next_to_a_Porsche_911_Turbo.png&w=1920&q=75">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <p>Vehicle Accessories</p>
+                                            <img src="https://shop.porsche.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2F1oyzmkwpf3d5%2FgnS7tAOR87wHF9DkUdYT5%2F256cf1223b9e65dfa852cc243616ad80%2FPorsche_Originals__1_.jpg&w=1920&q=75">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
                 
-            #slide1:checked ~ #control label:nth-child(2),
-            #slide2:checked ~ #control label:nth-child(3),
-            #slide3:checked ~ #control label:nth-child(4),
-            #slide4:checked ~ #control label:nth-child(5),
-            #slide5:checked ~ #control label:nth-child(6){
-                
+                </div>
+            </div>
+            <img src="https://fontmeme.com/permalink/241205/6d72d677973e88951590a562d95f70a9.png">
+            <i class="fa-solid fa-user"></i>
+        </nav>
+        <div id="container">
+            <h1><p>Model</p>CAYENNE</h1>
+            <div id="slider">
+                <input type="radio" name="radio" id="slide1" checked>
+                <input type="radio" name="radio" id="slide2">
+                <input type="radio" name="radio" id="slide3">
+                <input type="radio" name="radio" id="slide4">
+                <input type="radio" name="radio" id="slide5">
+                <input type="radio" name="radio" id="slide6">
+                <div id="overflow">
+                    <figure class="scroll">
+                        <img class="slide slide1" src="img/cayyenne(2).png">
+                        <img class="slide slide2" src="img/cayyenee.png">
+                        <img class="slide slide3" src="img/cayyenne(4).png">
+                        <img class="slide slide4" src="img/cayyenne(3).png">
+                        <img class="slide slide5" src="img/cayyenne(6).png">
+                        <img class="slide slide6" src="img/cayyenne(5).png">
+                    </figure>
+                </div>
+                <div id="control">
+                    <label for="slide1"></label>
+                    <label for="slide2"></label>
+                    <label for="slide3"></label>
+                    <label for="slide4"></label>
+                    <label for="slide5"></label>
+                    <label for="slide6"></label>
+                </div>
+                <div id="bullets">
+                    <label for="slide1"></label>
+                    <label for="slide2"></label>
+                    <label for="slide3"></label>
+                    <label for="slide4"></label>
+                    <label for="slide5"></label>
+                    <label for="slide6"></label>
+                </div>
+                <div id="content">
+                    <div class="textBox" for="silde1">
+                        <div class="leftText">
+                            <h2>
+                                Cayenne
+                            </h2>
+                            <p>
+                                Fuel consumption combined: 9,7 – 8,9 l/100 km<br>
+                                CO2-emissions combined (WLTP): 220 – 201 g/km<br>
+                                CO2 Class: G
+                            </p>
+                        </div>
+                        <div class ="rightText">
+                            <div>
+                                <img src="img/wireless-charging.png">
+                                <h3>
+                                    220kW/300PS
+                                </h3>
+                                <p>
+                                    Power (kW)/Power(PS)
+                                </p>
+                            </div>
+                            <div>
+                                <img src="img/speedometer.png">
+                                <h3>
+                                    5,1 s
+                                </h3>
+                                <p>
+                                    Acceleration 0 - 100 km/h
+                                </p>
+                            </div>
+                            <div>
+                                <img src="img/speed.png">
+                                <h3>
+                                    220km/h
+                                </h3>
+                                <p>
+                                    Top speed
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="textBox" for="silde2">
+                        <div class="leftText">
+                            <h2>
+                                Cayenne E-Hybrid
+                            </h2>
+                            <p>
+                                Fuel consumption combined: 9,7 – 8,9 l/100 km<br>
+                                CO2-emissions combined (WLTP): 220 – 201 g/km<br>
+                                CO2 Class: G
+                            </p>
+                        </div>
+                        <div class ="rightText">
+                            <div>
+                                <img src="img/wireless-charging.png">
+                                <h3>
+                                    220kW/300PS
+                                </h3>
+                                <p>
+                                    Power (kW)/Power(PS)
+                                </p>
+                            </div>
+                            <div>
+                                <img src="img/speedometer.png">
+                                <h3>
+                                    5,1 s
+                                </h3>
+                                <p>
+                                    Acceleration 0 - 100 km/h
+                                </p>
+                            </div>
+                            <div>
+                                <img src="img/speed.png">
+                                <h3>
+                                    220km/h
+                                </h3>
+                                <p>
+                                    Top speed
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="textBox" for="silde3">
+                        <div class="leftText">
+                            <h2>
+                                Cayenne S
+                            </h2>
+                            <p>
+                                Fuel consumption combined: 9,7 – 8,9 l/100 km<br>
+                                CO2-emissions combined (WLTP): 220 – 201 g/km<br>
+                                CO2 Class: G
+                            </p>
+                        </div>
+                        <div class ="rightText">
+                            <div>
+                                <img src="img/wireless-charging.png">
+                                <h3>
+                                    220kW/300PS
+                                </h3>
+                                <p>
+                                    Power (kW)/Power(PS)
+                                </p>
+                            </div>
+                            <div>
+                                <img src="img/speedometer.png">
+                                <h3>
+                                    5,1 s
+                                </h3>
+                                <p>
+                                    Acceleration 0 - 100 km/h
+                                </p>
+                            </div>
+                            <div>
+                                <img src="img/speed.png">
+                                <h3>
+                                    220km/h
+                                </h3>
+                                <p>
+                                    Top speed
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="textBox" for="silde4">
+                        <div class="leftText">
+                            <h2>
+                                Cayenne S E-Hybrid
+                            </h2>
+                            <p>
+                                Fuel consumption combined: 9,7 – 8,9 l/100 km<br>
+                                CO2-emissions combined (WLTP): 220 – 201 g/km<br>
+                                CO2 Class: G
+                            </p>
+                        </div>
+                        <div class ="rightText">
+                            <div>
+                                <img src="img/wireless-charging.png">
+                                <h3>
+                                    220kW/300PS
+                                </h3>
+                                <p>
+                                    Power (kW)/Power(PS)
+                                </p>
+                            </div>
+                            <div>
+                                <img src="img/speedometer.png">
+                                <h3>
+                                    5,1 s
+                                </h3>
+                                <p>
+                                    Acceleration 0 - 100 km/h
+                                </p>
+                            </div>
+                            <div>
+                                <img src="img/speed.png">
+                                <h3>
+                                    220km/h
+                                </h3>
+                                <p>
+                                    Top speed
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="textBox" for="silde5">
+                        <div class="leftText">
+                            <h2>
+                                Cayenne GTS
+                            </h2>
+                            <p>
+                                Fuel consumption combined: 9,7 – 8,9 l/100 km<br>
+                                CO2-emissions combined (WLTP): 220 – 201 g/km<br>
+                                CO2 Class: G
+                            </p>
+                        </div>
+                        <div class ="rightText">
+                            <div>
+                                <img src="img/wireless-charging.png">
+                                <h3>
+                                    220kW/300PS
+                                </h3>
+                                <p>
+                                    Power (kW)/Power(PS)
+                                </p>
+                            </div>
+                            <div>
+                                <img src="img/speedometer.png">
+                                <h3>
+                                    5,1 s
+                                </h3>
+                                <p>
+                                    Acceleration 0 - 100 km/h
+                                </p>
+                            </div>
+                            <div>
+                                <img src="img/speed.png">
+                                <h3>
+                                    220km/h
+                                </h3>
+                                <p>
+                                    Top speed
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="textBox" for="silde6">
+                        <div class="leftText">
+                            <h2>
+                                Cayenne Turbo E-Hybrid
+                            </h2>
+                            <p>
+                                Fuel consumption combined: 9,7 – 8,9 l/100 km<br>
+                                CO2-emissions combined (WLTP): 220 – 201 g/km<br>
+                                CO2 Class: G
+                            </p>
+                        </div>
+                        <div class ="rightText">
+                            <div>
+                                <img src="img/wireless-charging.png">
+                                <h3>
+                                    220kW/300PS
+                                </h3>
+                                <p>
+                                    Power (kW)/Power(PS)
+                                </p>
+                            </div>
+                            <div>
+                                <img src="img/speedometer.png">
+                                <h3>
+                                    5,1 s
+                                </h3>
+                                <p>
+                                    Acceleration 0 - 100 km/h
+                                </p>
+                            </div>
+                            <div>
+                                <img src="img/speed.png">
+                                <h3>
+                                    220km/h
+                                </h3>
+                                <p>
+                                    Top speed
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="main" class="scroll" >
+        <br>
+        <nav>
+            <div class="ruler"></div>
+            <div class="link">
+                <a href="#Concept">Concept</a>
+                <a href="#Performance">Performance</a>
+                <a href="#Sound">Sound</a>
+                <a href="#Gallery">Gallery</a>
+            </div>
+        </nav>
+        <section id="Concept">
+            <img src="https://images-porsche.imgix.net/-/media/1BDB408F77B248DE89F0B114AE5867C8_2305C2E787444D979C16274B1985F7E6_051-mosaic-editorial-desktop-i2?w=1800&q=85&crop=faces%2Centropy%2Cedges&auto=format">
+            <div class="text">
+                <h1>Further together.</h1>
+                <p>Experiencing moments together opens your eyes to what is special. The perfect starting point for this: the Porsche Cayenne Coupé. The design takes up the iconic silhouette of the 911, thereby impressively emphasising the sportiness of the coupé models.</p>
+            </div>
+        </section>
+        <section id="Performance" >
+            <div class="top">
+                <img src="https://files.porsche.com/filestore/image/multimedia/none/modelseries-macan3-highlights-design-operating-concept/normal/52e34a6e-e8a8-11eb-80d9-005056bbdc38;sL;twebp;c1690;gc/porsche-normal.webp">
+                <div class="text" >
+                    <h1>Performance.</h1>
+                    <p>The Cayenne Coupé models boast an appearance that is as sporty as it is ele- gant, characterised by the perfect in- terplay of typical Porsche design, which echoes the silhouette of the 911, and outstanding driving dynamics.</p>
+                </div>
+            </div>
+            <div class="top">
+                <div class="text" >
+                    <h1>Drive.</h1>
+                    <p>Whether you're in the driver's seat or a passenger: driving a Porsche should feel like a sport while still offering great comfort. The Cayenne Coupé models manage this balancing act effortlessly.</p>
+                </div>
+                <img src="https://images-porsche.imgix.net/-/media/E2996EF8803F45ECBEE1C31AFE527AD9_03D7D6200EC04CD18701427492BCA6EF_CY24J5BOX0001-cayenne-rear?w=900&q=85&crop=faces%2Centropy%2Cedges&auto=format">
+            </div>
+        </section>        
+        <section id="Sound" >
+            <h1>
+                Feel the Engine.
+            </h1>
+            <div class="Container">
+                <div class="left">
+                    <p>The Porsche 911 models, powered by flat-six engines, produce a unique acoustic experience that enthusiasts instantly recognize. </p>
+                    <div id="button">
+                        <audio for="btn">
+                            <source src="audio/cayanne.mp3" type="audio/mpeg">
+                        </audio>
+                        <input type="checkbox" id="btn" checked hidden>
+                        <label class="play-pause" for="btn">
+                            <i class="fa-solid fa-play"></i>
+                            <i class="fa-solid fa-pause"></i>
+                        </label>
+                        <p>Click for sound</p>
+                        <div class="wave" for="btn">
+                            <div class="line" style="--position: 1.3;"></div>
+                            <div class="line" style="--position: 0.1;"></div>
+                            <div class="line" style="--position: 1.0;"></div>
+                            <div class="line" style="--position: 0.1;"></div>
+                            <div class="line" style="--position: 1.3;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="imgContainer">
+                        <img src="https://images-porsche.imgix.net/-/media/FB5999808588461CA798D17B33CA01F1_AF614537A1F6407DA9E8A173A08A7E41_CY24J5HOX0002_intro?fp-x=0.5&fp-y=0.5&w=1759&ar=21%3A9&q=85&crop=focalpoint&auto=format">
+                    </div>
 
-                right: -5%;
-                top: 80%;
-                cursor: pointer;
-               
-            }
-            #slide2:checked ~ #control label:nth-child(1),
-            #slide3:checked ~ #control label:nth-child(2),
-            #slide4:checked ~ #control label:nth-child(3),
-            #slide5:checked ~ #control label:nth-child(4),
-            #slide6:checked ~ #control label:nth-child(5){
-                left: -5%;
-                top: 80%;
-            }
-            }
-        }
-    }
-    #main{
-        nav{
-            .link{
-                a{
-                    font-size: 15px;
-                }
-            }
-        }
-        #Concept{
-            background-image: linear-gradient(0deg, rgba(180,179,179,0) 55%, rgba(0,0,0,1) 93%);
-            flex-direction: column;
-            justify-content: space-around;
-            .text{
-                width: 100%;
-                text-align: center;
-                margin-top: 20px;
-                h1{
-                    font-size: 30px;
-                }
-                p{
-                    font-size: 15px;
-                }
-            }
-            video{
-                display: block;
-                height: 50%;
-                position: relative;
-            }
-        }
-        #Performance{
-            .top{
-                /* flex-direction: column; */
-                img{
-                    width: 50%;
-                }
-                img:nth-child(2){
-                    order: 1;
+                </div>
 
-                }
-                .text{
-                    width: 50%;
-                    h1{
-                        font-size: 25px;
-                    }
-                    p{
-                        font-size: 10px;
-                    }
-                }
-            }
-           
-        }
-        #Sound{
-            gap: 20px;
-            h1{
-                font-size: 30px;
-            }
-            .Container{
-                height: 80%;
-                flex-direction: column;
-                .left{
-                    width: 100%;
-                    padding: 0 10%;
-                    order: 2;
-                    p{
-                        font-size: 15px;
-                    }
-                }
-                .right{
+            </div>
+        </section>
+        <section id="Gallery" >
+            <h1>
+                Gallery.
+            </h1>
+            <div class="item">
+                <img style="grid-area: a;" src="https://images-porsche.imgix.net/-/media/ED94155D834842D4BD252E82D710C8B4_EE77E03DCF4D4EFC97FCE7050BDEA153_051-mosaic-editorial-desktop?w=1500&q=85&crop=faces%2Centropy%2Cedges&auto=format">
+                <img style="grid-area: b;" src="https://images-porsche.imgix.net/-/media/3A4FAE7943E24B859DA784CA7CE43196_0F43FAF1C7EF47E18E93CA00F3B30A37_CY24J5FOX0002?w=1500&q=85&crop=faces%2Centropy%2Cedges&auto=format" alt="">
+                <img style="grid-area: c;" src="https://images-porsche.imgix.net/-/media/DBF7134BE9D440A296E1B3D139EDFE4A_C8ABC80A33BD4F72AE8BE35247A2898C_051-mosaic-editorial-desktop-i1-CY25J5JOD0001?w=600&q=85&crop=faces%2Centropy%2Cedges&auto=format" alt="">
+                <img style="grid-area: d;" src="https://images-porsche.imgix.net/-/media/4C73313A117143A6A241ED2B5D5C138A_0BD622DA249A44FB98BB73073DF06B8F_CY24J5HOX0002-cayenne-turbo-e-hybrid-driving?fp-x=0.5&fp-y=0.5&w=1759&ar=21%3A9&q=85&crop=focalpoint&auto=format" alt="">
+                <img style="grid-area: e;" src="https://images-porsche.imgix.net/-/media/84BA3DED6EC44D19A50F11B979D696AC_6E5398F6F3514625B219ADA980F21C92_CY24J5ROX0002-cayenne-gts-coupe-with-woman?w=600&q=85&crop=faces%2Centropy%2Cedges&auto=format" alt="">
+            </div>
+        </section>
 
-                    clip-path: none;
-                    order: 1;
-                    width: 90%;
-                    .imgContainer{
-                        img{
-                            object-fit: cover;
-                            height: 200px;
-                            width: 100%;
-                        }
-                    }
 
-                }
-            }
-        }
-        #Gallery{
-            position: relative;
-            height: auto;
-            h1{
-                font-size: 30px;
-            }
-            .item{
-                grid-template-columns: repeat(1,1fr);
-                grid-template-rows: repeat(5,1fr);
-                grid-template-areas: 
-                "a"
-                "b"
-                "c"
-                "d"
-                "e"
-                ;
-            }
-        }
-    }
-    .footer {
-        height: auto;
-        .info-01 {
-            flex-direction: column;
-            gap: 3rem;
+    </div>
+    <div class="footer scroll">
+        <div class="info-01">
+            <div class="location-contact">
+                <div class="location">
+                    <p class="title">Location</p>
+                    <a href="https://maps.app.goo.gl/3YS5ZT4wXkRpmBEm8">No. 105 - MX08 (CBD4), City Center Boulevard Boeung Kok, 120210</a>
+                </div>
+                <div class="contact">
+                    <p  class="title">Contact Us</p>
+                    <div class="row">
+                        <i class="fa-solid fa-envelope"></i>
+                        <a href="mailto:melvin.how@hgbgroup.com">melvin.how@hgbgroup.com</a>
+                    </div>
+                    <div class="row">
+                        <i class="fa-solid fa-phone"></i>
+                        <a href="#">+855 96 751 6062</a>
+                    </div>
+                </div>
+            </div>
+            <div class="social-media">
+                <p class="title">Social Media</p>
+                <p class="info">Get in touch with PaPaN via social media</p>
+                <div class="media">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@sithan5678/video/7443003595970071826?is_from_webapp=1&sender_device=pc&web_id=7365074001733436944"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+                <p class="info">Get in touch with Porsche via social media</p>
+                <div class="media">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-pinterest-p"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="info-02">
+            <p class="title">Company</p>
+            <div class="link">
+                <div class="column-01">
+                    <a href="https://www.porsche.com/uk/aboutporsche/overview/">Porsche at a Glance</a>
+                    <a href="https://www.porsche.com/uk/aboutporsche/jobs/">Career</a>
+                    <a href="https://www.porsche.com/uk/dialog/contactandinformation/">Contact</a>
+                </div>
+                <div>
+                    <a href="https://www.porsche.com/uk/aboutporsche/n71/">Porsche Cars Great Britain</a>
+                    <a href="https://www.porsche.com/uk/motorsportandevents/porschepartnerforum/">Partner Forum</a>
+                </div>
+                <div>
+                    <a href="https://www.porsche.com/uk/aboutporsche/responsibility/">Sustainability</a>
+                    <a href="https://www.porsche.com/uk/aboutporsche/pressreleases/">Press</a>
+                </div>
+            </div>
+        </div>
+        <div class="ruler"></div>
+        <div class="info-03">
+            <div class="info-03-01">
+                <label style="margin-right: 5px;">© 2024 All rights reserved to Porsche Cars Great Britain Limited and its licensors.</label>
+                <a href="https://www.porsche.com/uk/termsofuse/">Terms of use</a>
+                <label class="divider">|</label>
+                <a href="https://www.porsche.com/uk/privacy-policy/">Privacy Policy</a>
+                <label class="divider">|</label>
+                <a href="https://www.porsche.com/uk/cookies/">Cookies</a>
+                <label class="divider">|</label>
+                <a href="https://www.porsche.com/uk/regulatory/">Regulatory</a>
+                <label class="divider">|</label>
+                <a href="https://www.porsche.com/uk/trademarksandotheriprs/">Trade Marks and other IPRs</a>
+                <label class="divider">|</label>
 
-            .social-media {
-                width: 100%;
-            }
-        }
-        .info-03{
-            .company{
-                margin: 0;
-                display: flex;
-                flex-wrap: wrap;
-                align-items: center;
-                justify-content: center;
-                a{
-                    .porsche{
-                        width: 50vw;
-                    }
-                    .papan{
-                        width: 42vw;
-                    }
-                }
-                
-            }
-        }
-    }
-    .scroll{
-        scroll-snap-align:unset;
-    }
-    
-}
+                <a href="https://www.porsche.com/uk/slavery-and-human-trafficking/">Slavery and Human Trafficking</a>
+                <label class="divider">|</label>
+                <a href="https://www.porsche.com/uk/ugc-terms-of-use/">UGC Terms of Use</a>
+                <label class="divider">|</label>
+                <a href="https://www.porsche.com/uk/tax-strategy/">Tax Strategy</a>
+                <label class="divider">|</label>
+                <a href="https://www.porsche.com/uk/pension-and-assurancescheme/">Pension and Assurance Scheme</a>
+                <label class="divider">|</label>
+                <a href="https://www.porsche.com/uk/section172statement/">Section 172 Statement</a>
+                <label class="divider">|</label>
+                <a href="https://www.porsche.com/licenses">Open Source Software Notice</a>
+                <label class="divider">|</label>
+                <a href="https://www.porsche.com/uk/aboutporsche/overview/compliance/whistleblower-system/">Whistleblower System</a>
+                <label class="divider">|</label>
+                <a href="https://www.porsche.com/uk/aboutporsche/overview/compliance/overview/">Porsche Code of Conduct</a>
+            </div>
+            <br>
+            <div class="info-03-02">
+                <p>* Data determined in accordance with the Worldwide Harmonized Light Vehicles Test Procedure (WLTP) as required by law. For Plug-in Hybrid Electric Vehicle (PHEV) range and Equivalent All Electric Range (EAER) figures are determined with the battery fully charged, using a combination of both battery power and fuel.</p>
+            </div>
+            <br>
+            <div class="info-03-03">
+                <p>Values are provided for comparison only. To the extent that fuel and energy consumption or CO2 values are given as ranges, these do not relate to a single, individual car and do not constitute part of the offer. 
+                    Optional features and accessories can change relevant vehicle parameters such as weight, rolling resistance and aerodynamics which may result in a change in fuel or energy consumption and CO2 values. Vehicle loading, 
+                    topography, weather and traffic conditions, as well as individual driving styles, can all affect the actual fuel consumption, energy consumption, electrical range, and CO2 emissions of a car.</p>
+            </div>
+            <br>
+            <div class="info-03-04">
+                <label>** Important information about the all-electric Porsche models can be found</label>
+                <a href="https://www.porsche.com/uk/accessoriesandservice/porscheservice/vehicleinformation/bev/">here.</a>
+            </div>
+            <br>
+            <div class="company">
+                <a href="#"><img src="https://fontmeme.com/permalink/241205/6d72d677973e88951590a562d95f70a9.png" alt="papan-profile" class="papan"></a>
+                <a href="#"><img src="https://fontmeme.com/permalink/241207/4b0b21e4cc63013a7d1c68f814b08f9f.png" alt="porsche-font" border="0" class="porsche"></a>
+            </div>
+        </div>
+    </div>
+
+    <script src="js.js">
+
+    </script>
+</body>
+</html>
