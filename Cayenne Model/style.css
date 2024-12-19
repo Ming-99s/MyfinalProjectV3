@@ -280,7 +280,7 @@ body{
         display: flex;
         align-items: center;
         h1{
-            line-height: 140px;
+            line-height: 150px;
             p{
                 text-align: start;
                 font-family: "Roboto Condensed", sans-serif;
@@ -289,7 +289,7 @@ body{
             font-family: "Passion One", sans-serif;
             font-weight: 400;
             position: absolute;
-            top: 34%;
+            top: 29%;
             left: 50%;
             transform: translate(-50%, -50%);
             /* z-index: 3; */
@@ -312,7 +312,7 @@ body{
             #overflow{
                 /* border: 2px solid red;   */
                 overflow: hidden;
-                width: 70%;
+                width: 80%;
 
             }
             /* .scroll::-webkit-scrollbar{
@@ -323,12 +323,11 @@ body{
                 scroll-snap-type:x mandatory; */
                 /* border: 2px solid red; */
                 width: 600%;
-                height: 300px;
+                height: 500px;
                 position: relative;
                 display: flex;
                 transition: 0.5s ease-in-out;
                 .slide{
-                    padding: 30px;
                     scroll-snap-align: start;
                     object-fit: cover;
                     float: left;
@@ -399,7 +398,7 @@ body{
                 /* height: 50px; */
                 /* width: 50px; */
                 display: flex;
-                bottom: -175px;
+                bottom: -80px;
                 gap: 30px;
                 border-radius: 50%;
                 /* background-color: white; */
@@ -441,7 +440,7 @@ body{
             #content{      
                 /* font-family: 'Roboto Condensed',serif; */
                 position: absolute;
-                bottom: -150px;
+                bottom: -50px;
                 width: 100%;
                 .textBox{
                     display: none;
@@ -1293,7 +1292,7 @@ body{
                 #overflow{
                     width: 100%;
                     .scroll{
-                        height: 130px;
+                        height: 200px;
                     
                     }
                 }
